@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
@@ -17,14 +18,16 @@ public class EugeneActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_eugene);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_eugene, menu);
-        return true;
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_eugene, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
@@ -38,9 +41,13 @@ public class EugeneActivity extends ActionBarActivity {
         if (id == R.id.action_settings) {
             return true;
         }
+        if(id==R.id.action_search){
+            return true;
+        }
 
         return super.onOptionsItemSelected(item);
     }
+
 
     /** Called when the user clicks the Send button */
     public void sendMessage(View view) {
